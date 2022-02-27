@@ -1,0 +1,15 @@
+like (4,6) = 12
+
+for q in range(int(input())):
+    X, Y = map(int, input().split())
+    if X % 2 == 1:
+        X_odd = (X // 2) + 1
+    else:
+        X_odd = X//2
+    X_even = X // 2
+    if Y % 2 == 1:
+        Y_odd = (Y // 2) + 1
+    else:
+        Y_odd = Y//2
+    Y_even = Y // 2
+    print((X_even * Y_even) + (X_odd * Y_odd))
