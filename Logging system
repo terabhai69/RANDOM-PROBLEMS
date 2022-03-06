@@ -1,0 +1,29 @@
+dict = {}
+j = 1
+while j == 1:
+    print("1. Sign in")
+    print("2. sign up")
+    print("3. Exit")
+    choice = int(input("Enter your choice: "))
+    if choice == 1:
+        print("You are Signing in here.")
+        name = input("Name: ")
+        password = input("Password: ")
+        if name in dict.keys():
+            if dict[name] == password:
+                print("You Have Successfully Signed In.")
+            else:
+                print("Incorrect Password. Try Again")
+            print()
+        else:
+            print("Incorrect Username.")
+            print()
+    elif choice == 2:
+        print("You are Signing up here.")
+        name = input("Name: ")
+        password = input("Password: ")
+        dict[name] = password
+        print("You Have Successfully Signed Up.")
+        print()
+    else:
+        j = 0
