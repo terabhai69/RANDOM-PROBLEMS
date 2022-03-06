@@ -1,0 +1,17 @@
+#Janmansh is at the fruit market to buy fruits for Chingari. There is an infinite supply of three different kinds of fruits with prices A, B and C.
+#He needs to buy a total of X fruits having at least 2 different kinds of fruits. What is the least amount of money he can spend to buy fruits?
+
+for q in range(int(input())):
+    N, f1,f2, f3 = map(int, input().split())
+    minimum = min(f1,f2,f3)
+    cost = (N-1)*minimum
+    if minimum ==  f1:
+        mini1 = min(f2,f3)
+        cost += mini1
+    elif minimum == f2:
+        mini1 = min(f1,f3)
+        cost += mini1
+    else:
+        mini1 = min(f1,f2)
+        cost += mini1
+    print(cost)
