@@ -1,0 +1,45 @@
+#This is a phone directary system which is made by I.There are Multiple Function, I implemented:)
+#You must try with the help of Functions:)
+
+ph_di = {"Arbaz" : '82XXXXXXXX', "Sameer" : '74XXXXXXXX'}
+j = 1
+while j == 1:
+    print("1. Add contact\n2. Delete contact\n3. Show contacts\n4. Search contacts by name\n5. Search contacts by number"
+          "\n6. Exit")
+    choice = int(input("Enter your choice: "))
+    ph_di_key = list(ph_di.keys())
+    ph_di_value = list(ph_di.values())
+    ph_di_key_up = [i.upper() for i in ph_di_key]
+    ph_di_new = dict(zip(ph_di_key,ph_di_key_up))
+    hh = dict([(ph_di_new.get(key), value) for key, value in ph_di.items()])
+    if choice == 1:
+        name = input("Name: ")
+        number = int(input("Number: "))
+        ph_di[name] = number
+        print("Operation Successful.")
+    elif choice == 2:
+        for i in range(len(ph_di)):
+            print(ph_di_key[i]," ", ph_di_value[i])
+        name = input("Name: ")
+        if name in ph_di_key:
+            del ph_di[name]
+            print("Operation is Successful.")
+        else:
+            print("This contact is not present.")
+    elif choice == 3:
+        for i in range(len(ph_di)):
+            print(ph_di_key[i]," ", ph_di_value[i])
+    elif choice == 4:
+        name = input("Name: ")
+        NAME = name.upper()
+        if NAME in hh:
+            print(hh[NAME])
+        else:
+            print("This contact is not present.")
+    elif choice == 5:
+        number = input("Number: ")
+        ind = ph_di_value.index(number)
+        print(ph_di_key[ind])
+    else:
+        j = 0
+    print()
