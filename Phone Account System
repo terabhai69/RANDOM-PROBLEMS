@@ -1,6 +1,46 @@
 #This is a phone directary system which is made by I.There are Multiple Function, I implemented:)
 #You must try with the help of Functions:)
 
+def add():
+    name = input("Name: ")
+    number = int(input("Number: "))
+    ph_di[name] = number
+    print("Operation Successful.")
+
+def delete():
+    for i in range(len(ph_di)):
+        print(ph_di_key[i], " ", ph_di_value[i])
+    name = input("Name: ")
+    if name in ph_di_key:
+        del ph_di[name]
+        print("Operation is Successful.")
+    else:
+        print("This contact is not present.")
+
+def show():
+    for i in range(len(ph_di)):
+        print(ph_di_key[i], " ", ph_di_value[i])
+
+def search_by_name():
+    k = 1
+    i = 1
+    name = input("Name: ")
+    NAME = name.upper()
+    for NAME in hh:
+        print(i,".",hh[NAME])
+        k = 0
+        i += 1
+    if k == 0:
+        print(i-1,"numbers found above.")
+    if k != 0:
+        print("This contact is not present.")
+
+def search_by_no():
+    number = input("Number: ")
+    ind = ph_di_value.index(number)
+    print(ph_di_key[ind])
+
+
 ph_di = {"Arbaz" : '82XXXXXXXX', "Sameer" : '74XXXXXXXX'}
 j = 1
 while j == 1:
@@ -13,33 +53,15 @@ while j == 1:
     ph_di_new = dict(zip(ph_di_key,ph_di_key_up))
     hh = dict([(ph_di_new.get(key), value) for key, value in ph_di.items()])
     if choice == 1:
-        name = input("Name: ")
-        number = int(input("Number: "))
-        ph_di[name] = number
-        print("Operation Successful.")
+        add()
     elif choice == 2:
-        for i in range(len(ph_di)):
-            print(ph_di_key[i]," ", ph_di_value[i])
-        name = input("Name: ")
-        if name in ph_di_key:
-            del ph_di[name]
-            print("Operation is Successful.")
-        else:
-            print("This contact is not present.")
+        delete()
     elif choice == 3:
-        for i in range(len(ph_di)):
-            print(ph_di_key[i]," ", ph_di_value[i])
+        show()
     elif choice == 4:
-        name = input("Name: ")
-        NAME = name.upper()
-        if NAME in hh:
-            print(hh[NAME])
-        else:
-            print("This contact is not present.")
+        search_by_name()
     elif choice == 5:
-        number = input("Number: ")
-        ind = ph_di_value.index(number)
-        print(ph_di_key[ind])
+        search_by_no()
     else:
         j = 0
     print()
