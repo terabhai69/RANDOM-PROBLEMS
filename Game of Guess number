@@ -1,0 +1,40 @@
+#guess no. if you got you will win. you hae only 9 chance to win.
+
+import datetime
+
+now = datetime.datetime.now()
+second = now.strftime("%S")
+
+print("1.Harder\n2.Easy")
+choice = int(input("Choice: "))
+for q in range(1,11):
+    if q == 10:
+        print("Game over!")
+    if choice == 2:
+        N = 2**3 + 3**3 + 46 / 2
+    elif choice == 1:
+        N = int(second)
+    print("You have only",9-(q-1),"chance to win.")
+    no = int(input("Enter No. between (1 -60): "))
+    if  no > N:
+        num = no - N
+        if num >= 1 and num <= 10:
+            print("greater and so close to win.")
+        elif num >= 10 and num <= 25:
+            print("its greater to win.")
+        elif num >= 25:
+            print("its too greater to win.")
+
+    elif no < N:
+        num = N - no
+        if num >= 1 and num <= 10:
+            print("shorter and so close to win.")
+        elif num >= 10 and num <= 25:
+            print("its shorter to win.")
+        elif num >= 25:
+            print("its too shorter to win.")
+
+    elif no == N:
+        print("You win this game")
+        print("You are win in ",q,"chance.")
+        break
