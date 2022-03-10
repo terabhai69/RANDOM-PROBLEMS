@@ -1,0 +1,29 @@
+import random
+
+Game = ["Stone","Paper","Scissor"]
+com = random.choice(Game)
+candi = input("Your choice(Stone,Paper,Scissor): ")
+try:
+    print("Compuert have", com)
+    if com == "Stone" and candi == "Scissor":
+        print("Computer wins")
+    elif candi == "Stone" and com == "Scissor":
+        print("Player wins")
+    elif com == "Stone" and candi == "Paper":
+        print("Player wins")
+    elif com == "Paper" and candi == "Stone":
+        print("Computer wins")
+    elif com == "Paper" and candi == "Scissor":
+        print("Player wins")
+    elif com == "Scissor" and candi == "Paper":
+        print("Computer wins")
+    elif com == "Paper" and candi == "Scissor":
+        print("Computer wins")
+    elif com == "Stone" and candi == "Stone":
+        print("Match is Draw.")
+    elif com == "Paper" and candi == "Paper":
+        print("Match is Draw.")
+    elif com == "Scissor" and candi == "Scissor":
+        print("Match is Draw.")
+except Exception as err:
+    print("Enter wrong option or spell.")
