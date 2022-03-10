@@ -1,3 +1,6 @@
+#This is a case sensitive program
+#'paper' will not work but 'Paper' will work. Same with Others.
+
 import random
 
 Game = ["Stone","Paper","Scissor"]
