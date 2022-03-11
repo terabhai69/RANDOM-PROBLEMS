@@ -1,0 +1,52 @@
+#Actually, It is a timer which recall us to drink, eye rest and exercise at the given time to this program.
+
+import time
+import datetime
+from pygame import mixer
+
+
+def playmusic(file, stop):
+    mixer.init()
+    mixer.music.load(file)
+    mixer.music.play()
+    while True:
+        if input() == stop:
+            mixer.music.stop()
+            break
+
+
+with open('water_record.txt','w') as w:
+    k = 1
+with open('eye_record.txt', 'w') as ww:
+    kk = 2
+with open('exercise_record.txt', 'w') as www:
+    kkk =3
+
+
+water = time.time()
+eye = time.time()
+exercise = time.time()
+buzzer_water = 10
+buzzer_eye = 30
+buzzer_exercise = 45
+while True:
+    if time.time() - water > buzzer_water:
+        print("Enter 'donew' to stop.")
+        playmusic('water.mp3',"donew")
+        with open('water_record.txt','a') as w:
+            W = w.write(f"water time : {datetime.datetime.now()}\n")
+        water = time.time()
+
+    elif time.time() - eye > buzzer_eye:
+        print("Enter 'donee' to stop.")
+        playmusic('eye.mp3',"donee")
+        with open('eye_record.txt','a') as w:
+            W = w.write(f"eye time : {datetime.datetime.now()}\n")
+        eye = time.time()
+
+    elif time.time() - exercise > buzzer_exercise:
+        print("Enter 'doneex' to stop.")
+        playmusic('exercise.mp3',"doneex")
+        with open('exercise_record.txt','a') as w:
+            W = w.write(f"Exercise time : {datetime.datetime.now()}\n")
+        exercise = time.time()
