@@ -2,51 +2,75 @@
 #'paper' will not work but 'Paper' will work. Same with Others.
 
 import random
+import datetime
 
-print(f"Both of you and computer have 0 Points initially.")
-n = int(input("Round will be "))
-comp = 0
-man = 0
-for i in range(1,n+1):
-    print(f"ROUND {i}")
-    Game = ["Stone","Paper","Scissor"]
-    com = random.choice(Game)
-    candi = input("Your choice(Stone,Paper,Scissor): ")
-    print("Compuert have", com)
-    if com == "Stone" and candi == "Scissor":
-        print("Computer wins")
-        comp += 1
-    elif candi == "Stone" and com == "Scissor":
-        print("Player wins")
-        man += 1
-    elif com == "Stone" and candi == "Paper":
-        print("Player wins")
-        man += 1
-    elif com == "Paper" and candi == "Stone":
-        print("Computer wins")
-        comp += 1
-    elif com == "Paper" and candi == "Scissor":
-        print("Player wins")
-        man += 1
-    elif com == "Scissor" and candi == "Paper":
-        print("Computer wins")
-        comp += 1
-    elif com == "Paper" and candi == "Scissor":
-        print("Computer wins")
-        comp += 1
-    elif com == "Stone" and candi == "Stone":
-        print("Match is Draw.")
-    elif com == "Paper" and candi == "Paper":
-        print("Match is Draw.")
-    elif com == "Scissor" and candi == "Scissor":
-        print("Match is Draw.")
+
+with open("record.txt", 'w') as O:
+    print(f"Both of you and computer have 0 Points initially.")
+    n = int(input("Round will be "))
+    comp = 0
+    man = 0
+    for i in range(1,n+1):
+        print(f"ROUND {i}")
+        Game = ["St","Pa","Sc"]
+        com = random.choice(Game)
+        candi = input("Your choice(St for Stone,Pa for Paper,Sc for Scissor): ")
+        print(f"Computer have {com}")
+        if com == "St" and candi == "Sc":
+            print("Computer wins")
+            comp += 1
+            O.write(f"*. computer : {com} and player : {candi} and computer win at time {datetime.datetime.now()}\n")
+        elif candi == "St" and com == "Sc":
+            print("Player wins")
+            man += 1
+            O.write(f"*. computer : {com} and player : {candi} and player win at time {datetime.datetime.now()}\n")
+        elif com == "St" and candi == "Pa":
+            print("Player wins")
+            man += 1
+            O.write(f"*. computer : {com} and player : {candi} and player win at time {datetime.datetime.now()}\n")
+        elif com == "Pa" and candi == "St":
+            print("Computer wins")
+            comp += 1
+            O.write(f"*. computer : {com} and player : {candi} and computer win at time {datetime.datetime.now()}\n")
+        elif com == "Pa" and candi == "Sc":
+            print("Player wins")
+            man += 1
+            O.write(f"*. computer : {com} and player : {candi} and player win at time {datetime.datetime.now()}\n")
+        elif com == "Sc" and candi == "Pa":
+            print("Computer wins")
+            comp += 1
+            O.write(f"*. computer : {com} and player : {candi} and computer win at time {datetime.datetime.now()}\n")
+        elif com == "Pa" and candi == "Sc":
+            print("Computer wins")
+            comp += 1
+            O.write(f"*. computer : {com} and player : {candi} and computer win at time {datetime.datetime.now()}\n")
+        elif com == "St" and candi == "St":
+            print("Match is Draw.")
+            O.write(f"*. computer : {com} and player : {candi} and match is draw at time {datetime.datetime.now()}\n")
+        elif com == "Pa" and candi == "Pa":
+            print("Match is Draw.")
+            O.write(f"*. computer : {com} and player : {candi} and match is draw at time {datetime.datetime.now()}\n")
+        elif com == "Sc" and candi == "Sc":
+            print("Match is Draw.")
+            O.write(f"*. computer : {com} and player : {candi} and match is draw at time {datetime.datetime.now()}\n")
+        else:
+            print("SPELLING ERROR!!!!!!!")
+            O.write(f"*. computer : {com} and player : {candi} and match is consider as draw at time {datetime.datetime.now()}\n")
+
+        print(f"You have {man} Points and computer have {comp} Points")
+    if man > comp:
+        print('you win this Game and computer lose')
+        O.write(f"Over all Player win this game")
+    elif comp == man:
+        print("Both of you have same Points so Match is draw:)")
+        O.write(f"Over all this game is Draw.")
     else:
-        print("SPELLING ERROR!!!!!!!")
-
-    print(f"You have {man} Points and computer have {comp} Points")
-if man > comp:
-    print('you win this Game and computer lose,')
-elif comp == man:
-    print("Both of you have same Points so Match is draw:)")
-else:
-    print("Computer win this game and you lose.")
+        print("Computer win this game and you lose.")
+        O.write(f"Over all Computer win this game.")
+with open("record.txt",'r') as R:
+    press = input("Press 'Show' to see the rounds list otherwise press 'No': ")
+    if press == "Show":
+        for i in range(n+1):
+            print(R.readline())
+    else:
+        print("OK!")
