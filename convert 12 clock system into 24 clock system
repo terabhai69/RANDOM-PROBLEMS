@@ -1,0 +1,20 @@
+#give time in given format Please--
+# like  12:34 PM or 3:54 AM
+
+time = input("Enter Time: ")
+k = 0
+if "AM" in time:
+    print(time)
+else:
+    #split every parameter of time
+    time_hrs = time.split(":")
+    time_min = time_hrs[1].split(" ")
+    time_mode = time_min[1]
+    #check if hrs is equal to 12
+    if time_hrs[0] == '12':
+        print(time_hrs[0] + ":" + time_min[0] + " " + time_mode)      #add all parameter
+        k = 1    #flag if if statement run coz of in elif condition
+    elif time_hrs[0] >= '1' and k == 0:
+        time_hrs[0] = int(time_hrs[0]) + 12
+        time_hrs[0] = str(time_hrs[0]) + ":"
+        print(time_hrs[0] + time_min[0] +" "+ time_mode)   #add all parameter
