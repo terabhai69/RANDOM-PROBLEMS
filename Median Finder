@@ -1,0 +1,18 @@
+#The median of these elements are (7 8 9 5 7 6) "3" means '9' which mean average of the elements is hold last at '9' element.
+#Its just a maths problem.
+
+N = list(map(int, input().split()))
+half_of_list = sum(N)/2
+a,b, median = N[0], N[1], 0
+if a < half_of_list:
+    median += 1
+for i in range(len(N)):
+    sume = a + b
+    if sume <= half_of_list:
+        median += 1
+    elif sume > half_of_list:
+        median += 1
+        break
+    a = sume
+    b = N[i+2]
+print(f"The median of the table is {median} (According to 1, 2, 3, 4.... serial number) corresponding element is {N[median -1]}.")
