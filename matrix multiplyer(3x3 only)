@@ -1,0 +1,82 @@
+matrix = [[2, 1, 1],
+          [0, 1, 0],
+          [1, 1, 2]]
+output_matrix = [[1, 0, 0],
+                 [0, 1, 0],
+                 [0, 0, 1]]
+
+if matrix[0][0] != 1:
+    n = matrix[0][0]
+    m = output_matrix[0][0]
+    for i in range(3):
+        matrix[0][i] = matrix[0][i] / n
+        output_matrix[0][i] = output_matrix[0][i] / n
+
+if matrix[1][0] != 0:
+    n = matrix[1][0]
+    m = output_matrix[1][0]
+    for i in range(3):
+        matrix[1][i] = matrix[1][i] - (matrix[0][i]*n)
+        output_matrix[1][i] = output_matrix[1][i] - (output_matrix[0][i]*n)
+
+if matrix[2][0] != 0:
+    n = matrix[2][0]
+    m = output_matrix[2][0]
+    for i in range(3):
+        matrix[2][i] = matrix[2][i] - (matrix[0][i]*n)
+        output_matrix[2][i] = output_matrix[2][i] - (output_matrix[0][i]*n)
+
+if matrix[1][1] != 1:
+    n = matrix[1][1]
+    m = output_matrix[1][1]
+    for i in range(3):
+        matrix[1][i] = matrix[1][i]*(1/n)
+        output_matrix[1][i] = output_matrix[1][i]*(1/n)
+        if matrix[1][i] == -0.0:
+            matrix[1][i] = 0.0
+
+if matrix[2][1] != 0:
+    n = matrix[2][1]
+    m = output_matrix[2][1]
+    for i in range(3):
+        matrix[2][i] = matrix[2][i] - (matrix[1][i]*n)
+        output_matrix[2][i] = output_matrix[2][i] - (output_matrix[1][i]*n)
+
+if matrix[2][2] != 1:
+    n = matrix[2][2]
+    m = output_matrix[2][2]
+    for i in range(3):
+        matrix[2][i] = matrix[2][i]*(1/n)
+        output_matrix[2][i] = output_matrix[2][i]*(1/n)
+        if matrix[2][i] == -0.0:
+            matrix[2][i] = 0.0
+
+if matrix[1][2] != 0:
+    n = matrix[1][2]
+    m = output_matrix[1][2]
+    for i in range(3):
+        matrix[1][i] = matrix[1][i] - (matrix[2][i]*n)
+        output_matrix[1][i] = output_matrix[1][i] - (output_matrix[2][i]*n)
+
+if matrix[0][2] != 0:
+    n = matrix[0][2]
+    m = output_matrix[0][2]
+    for i in range(3):
+        matrix[0][i] = matrix[0][i] - (matrix[2][i]*n)
+        output_matrix[0][i] = output_matrix[0][i] - (output_matrix[2][i]*n)
+
+if matrix[0][1] != 0:
+    n = matrix[0][1]
+    m = output_matrix[0][1]
+    for i in range(3):
+        matrix[0][i] = matrix[0][i] - (matrix[1][i]*n)
+        output_matrix[0][i] = output_matrix[0][i] - (output_matrix[1][i]*n)
+
+for i in range(3):
+    for j in range(3):
+        output_matrix[i][j] = str(output_matrix[i][j])
+
+for i in range(3):
+    for j in range(3):
+        print(output_matrix[i][j][:5],end=",  ")
+    print()
